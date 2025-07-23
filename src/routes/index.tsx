@@ -10,7 +10,7 @@ export const Route = createFileRoute('/')({
 function App() {
   return (
     <div className='text-center'>
-      <header className='flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]'>
+      <header className='min-h-[calc(100vh-8rem)] flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]'>
         <img
           src={logo}
           className='h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]'

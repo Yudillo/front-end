@@ -3,6 +3,7 @@ import { defaultTheme } from '@/style/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const headerContainer = style({
+  height: '4rem',
   '@media': {
     [mediaQuery.desktop]: {
       padding: defaultTheme.headerPadding.desktop.padding,
