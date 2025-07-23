@@ -78,7 +78,7 @@ src/
 ├── pages/ # 페이지 단위 구성
 ├── types/ # TypeScript 전용 타입 선언
 ├── utils/ # 유틸리티 함수들
-└── App.tsx # 진입 파일
+└── main.tsx # 진입 파일
 ```
 
 </br>
