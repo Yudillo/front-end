@@ -1,4 +1,4 @@
-import { defaultTheme } from '@/style/theme.css';
+import { defaultTheme } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const navBarContainer = style({
