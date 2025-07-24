@@ -79,9 +79,11 @@ src/
 ├── components/ # 재사용 가능한 컴포넌트
 ├── constants/ # 상수 파일
 ├── hooks/ # 커스텀 훅
+├── integrations/ #
+├── layout/ # 미디어쿼리별 레이아웃 관리
+├── pages/ # 페이지 단위 구성
 ├── routes/ # 파일 기반 라우트
 ├── styles # 전역스타일
-├── pages/ # 페이지 단위 구성
 ├── types/ # TypeScript 전용 타입 선언
 ├── utils/ # 유틸리티 함수들
 └── main.tsx # 진입 파일
