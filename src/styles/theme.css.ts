@@ -10,6 +10,7 @@ export const defaultTheme = createGlobalTheme(':root', {
     beige: '#FFECDB',
     orange: '#FF9149',
     basic: '#6B7582',
+    input: '#F0F2F5',
   },
   borderRadius: {
     small: '8px',

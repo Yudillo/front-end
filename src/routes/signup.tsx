@@ -1,10 +1,9 @@
-import LoginPage from '@/pages/login/LoginPage';
 import { createFileRoute } from '@tanstack/react-router';
 
-export const Route = createFileRoute('/login')({
+export const Route = createFileRoute('/signup')({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  return <LoginPage />;
+  return <div>Hello "/join"!</div>;
 }
