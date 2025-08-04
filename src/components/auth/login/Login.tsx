@@ -72,7 +72,9 @@ export default function Login() {
           message={validation.password ? '' : AUTH_MESSAGE.password}
         />
         <div className={a.contentWrapper}>
-          <p className={s.forgotPassword}>비밀번호를 잊으셨나요?</p>
+          <Link className={s.forgotPasswordLink} to='/reset-password'>
+            비밀번호를 잊으셨나요?
+          </Link>
         </div>
         <Button title='로그인' type='submit' />
       </form>

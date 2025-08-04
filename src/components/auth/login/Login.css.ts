@@ -12,7 +12,7 @@ export const contentWrapper = style({
   padding: '12px',
 });
 
-export const forgotPassword = style({
+export const forgotPasswordLink = style({
   color: defaultTheme.color.orange,
   marginBottom: '.5rem',
 });
