@@ -10,7 +10,7 @@ export default function LayoutMobile() {
       <div className={s.contentsContainer}>
         <Outlet />
       </div>
-      <NavBar />
+      {/* <NavBar /> */}
     </>
   );
 }

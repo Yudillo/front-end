@@ -3,6 +3,8 @@ import { style } from '@vanilla-extract/css';
 
 export const contentWrapper = style({
   padding: '12px',
+  display: 'grid',
+  gap: '5px',
 });
 
 export const inputBasic = style({
@@ -13,6 +15,7 @@ export const inputBasic = style({
   padding: '12px',
 });
 
-export const forgotPassword = style({
+export const validation = style({
   color: defaultTheme.color.orange,
+  paddingLeft: '.5rem',
 });

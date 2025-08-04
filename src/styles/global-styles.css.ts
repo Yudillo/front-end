@@ -1,13 +1,13 @@
-import { mediaQuery } from '@/constants/breakpoint';
+import { MEDIA_QUERY } from '@/constants/breakpoint';
 import { globalStyle } from '@vanilla-extract/css';
 import { defaultTheme } from './theme.css';
 
 globalStyle('*, html, body', {
-  '@media': Object.keys(mediaQuery).reduce((acc, key) => {
-    const breakpoint = key as keyof typeof mediaQuery;
+  '@media': Object.keys(MEDIA_QUERY).reduce((acc, key) => {
+    const breakpoint = key as keyof typeof MEDIA_QUERY;
     return {
       ...acc,
-      [mediaQuery[breakpoint]]: defaultTheme.layoutWidth[breakpoint],
+      [MEDIA_QUERY[breakpoint]]: defaultTheme.layoutWidth[breakpoint],
     };
   }, {}),
 });

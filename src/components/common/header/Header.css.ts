@@ -1,17 +1,17 @@
-import { mediaQuery } from '@/constants/breakpoint';
+import { MEDIA_QUERY } from '@/constants/breakpoint';
 import { defaultTheme } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const headerContainer = style({
   height: '4rem',
   '@media': {
-    [mediaQuery.desktop]: {
+    [MEDIA_QUERY.desktop]: {
       padding: defaultTheme.headerPadding.desktop.padding,
     },
-    [mediaQuery.tablet]: {
+    [MEDIA_QUERY.tablet]: {
       padding: defaultTheme.headerPadding.tablet.padding,
     },
-    [mediaQuery.mobile]: {
+    [MEDIA_QUERY.mobile]: {
       padding: defaultTheme.headerPadding.mobile.padding,
     },
   },
