@@ -22,6 +22,6 @@ export const signupWrapper = style({
   justifyContent: 'center',
 });
 
-export const signupP = style({
+export const signupLink = style({
   color: defaultTheme.color.lightBlue,
 });

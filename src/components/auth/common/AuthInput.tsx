@@ -22,7 +22,6 @@ export default function AuthInput({
         className={s.inputBasic}
         type={type}
         placeholder={placeholder}
-        name={type}
         value={value}
         onChange={(e) => onChange(e)}
       />

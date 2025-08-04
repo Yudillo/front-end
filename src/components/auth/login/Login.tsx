@@ -5,6 +5,7 @@ import AuthInput from '../common/AuthInput';
 import { useState } from 'react';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import { validationValue } from '@/utils/validation';
+import { Link } from '@tanstack/react-router';
 
 export default function Login() {
   const [inputValue, setInputValue] = useState<{
@@ -77,7 +78,9 @@ export default function Login() {
       </form>
 
       <div className={s.signupWrapper}>
-        <p className={s.signupP}>계정이 없나요? 회원가입</p>
+        <Link className={s.signupLink} to='/signup'>
+          계정이 없나요? 회원가입
+        </Link>
       </div>
     </section>
   );
