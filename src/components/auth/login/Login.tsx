@@ -1,6 +1,6 @@
 import Button from '@/components/common/button/Button';
 import * as s from './Login.css';
-import * as a from '@/components/auth/common/AuthCommon.css';
+// import * as a from '@/components/auth/common/AuthInput.css';
 import AuthInput from '../common/AuthInput';
 import { useState } from 'react';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
@@ -23,17 +23,10 @@ export default function Login() {
   const handleSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-    const passwordRegex =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>]).{8,16}$/;
-
     const form = new FormData();
 
-    const emailValidation = validationValue(emailRegex, inputValue.email);
-    const passwordValidation = validationValue(
-      passwordRegex,
-      inputValue.password,
-    );
+    const emailValidation = validationValue('email', inputValue.email);
+    const passwordValidation = validationValue('password', inputValue.password);
 
     setValidation((prev) => ({
       ...prev,
@@ -48,9 +41,10 @@ export default function Login() {
   };
 
   return (
-    <section className={s.loginContainer}>
+    <section className={s.loginSection}>
       <form onSubmit={handleSubmitLogin}>
         <AuthInput
+          name='email'
           type='email'
           placeholder='이메일'
           value={inputValue.email}
@@ -60,6 +54,7 @@ export default function Login() {
           message={validation.email ? '' : AUTH_MESSAGE.email}
         />
         <AuthInput
+          name='password'
           type='password'
           placeholder='비밀번호'
           value={inputValue.password}
@@ -71,7 +66,7 @@ export default function Login() {
           }
           message={validation.password ? '' : AUTH_MESSAGE.password}
         />
-        <div className={a.contentWrapper}>
+        <div className={s.extendContentWrapper}>
           <Link className={s.forgotPasswordLink} to='/reset-password'>
             비밀번호를 잊으셨나요?
           </Link>

@@ -1,3 +1,4 @@
+import SignupPage from '@/pages/singup/SignupPage';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/signup')({
@@ -5,5 +6,5 @@ export const Route = createFileRoute('/signup')({
 });
 
 function RouteComponent() {
-  return <div>Hello "/join"!</div>;
+  return <SignupPage />;
 }

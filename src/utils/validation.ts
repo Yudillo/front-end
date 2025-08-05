@@ -1,3 +1,17 @@
-export const validationValue = (regex: RegExp, value: string) => {
-  return regex.test(value);
+import type { AUTH_MESSAGE } from '@/constants/validationMessage';
+
+export const validationValue = (
+  key: keyof typeof AUTH_MESSAGE,
+  value: string,
+) => {
+  const regex = {
+    email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+    code: /^\d{6}$/,
+    password: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>]).{8,16}$/,
+    passwordCheck:
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>]).{8,16}$/,
+    nickname: /^(?:\d{6}|[가-힣a-zA-Z0-9]{1,8})$/,
+  };
+
+  return regex[key].test(value);
 };
