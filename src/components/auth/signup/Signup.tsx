@@ -114,22 +114,24 @@ export default function Signup() {
 
   return (
     <section className={s.signupSection}>
-      <form onSubmit={handleSubmit}>
-        {inputs.map(({ key, type, placeholder, checkButton, onClick }) => (
-          <AuthInput
-            key={key}
-            name={key}
-            type={type}
-            placeholder={placeholder}
-            value={inputValue[key]}
-            onChange={(e) =>
-              setInputValue((prev) => ({ ...prev, [key]: e.target.value }))
-            }
-            message={validation[key] ? '' : AUTH_MESSAGE[key]}
-            checkButton={checkButton}
-            onClick={onClick}
-          />
-        ))}
+      <form className={s.formGapSignup} onSubmit={handleSubmit}>
+        <div>
+          {inputs.map(({ key, type, placeholder, checkButton, onClick }) => (
+            <AuthInput
+              key={key}
+              name={key}
+              type={type}
+              placeholder={placeholder}
+              value={inputValue[key]}
+              onChange={(e) =>
+                setInputValue((prev) => ({ ...prev, [key]: e.target.value }))
+              }
+              message={validation[key] ? '' : AUTH_MESSAGE[key]}
+              checkButton={checkButton}
+              onClick={onClick}
+            />
+          ))}
+        </div>
         <Button type='submit' title='회원가입' />
       </form>
     </section>

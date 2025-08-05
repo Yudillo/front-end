@@ -63,20 +63,22 @@ export default function ResetPassword() {
 
   return (
     <section className={s.ResetPasswordSection}>
-      <form onSubmit={handleSubmit}>
-        {inputs.map(({ key, type, placeholder }) => (
-          <AuthInput
-            key={key}
-            name={key}
-            type={type}
-            placeholder={placeholder}
-            value={inputValue[key]}
-            onChange={(e) =>
-              setInputValue((prev) => ({ ...prev, [key]: e.target.value }))
-            }
-            message={validation[key] ? '' : AUTH_MESSAGE[key]}
-          />
-        ))}
+      <form className={s.formGapResetPassword} onSubmit={handleSubmit}>
+        <div>
+          {inputs.map(({ key, type, placeholder }) => (
+            <AuthInput
+              key={key}
+              name={key}
+              type={type}
+              placeholder={placeholder}
+              value={inputValue[key]}
+              onChange={(e) =>
+                setInputValue((prev) => ({ ...prev, [key]: e.target.value }))
+              }
+              message={validation[key] ? '' : AUTH_MESSAGE[key]}
+            />
+          ))}
+        </div>
         <Button type='submit' title='비밀번호 변경' />
       </form>
     </section>
