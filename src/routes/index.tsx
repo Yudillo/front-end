@@ -2,20 +2,31 @@ import { createFileRoute } from '@tanstack/react-router';
 // import logo from '../logo.svg'
 import logo from '../assets/yudilloLogo.svg';
 import '../styles/global-styles.css';
+import { useModal } from '@/hooks/useModal';
+import Modal from '@/components/common/modal/Modal';
 
 export const Route = createFileRoute('/')({
   component: App,
 });
 
 function App() {
+  const { isOpen, isConfirm, message, handleClose, handleConfirm, handleOpen } =
+    useModal();
+
+  const handleClick = () => {
+    handleOpen('메세지');
+  };
+
   return (
     <div className='text-center'>
       <header className='min-h-[calc(100vh-8rem)] flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]'>
-        <img
-          src={logo}
-          className='h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]'
-          alt='logo'
-        />
+        <button type='button' onClick={handleClick}>
+          <img
+            src={logo}
+            className='h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]'
+            alt='logo'
+          />
+        </button>
         <p>
           Edit <code>src/routes/index.tsx</code> and save to reload.
         </p>
@@ -36,6 +47,9 @@ function App() {
           Learn TanStack
         </a>
       </header>
+      <Modal isOpen={isOpen} onClose={handleClose}>
+        {message}
+      </Modal>
     </div>
   );
 }
