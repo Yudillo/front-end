@@ -1,30 +1,39 @@
+import { absoluteCenter } from '@/styles/global-styles.css';
 import { defaultTheme } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
-export const contentWrapper = style({
+const inputWrapper = style({
   position: 'relative',
   width: '100%',
-  padding: '12px',
+  padding: defaultTheme.layoutPadding.mobile.paddingContent,
   display: 'grid',
   gap: '5px',
 });
 
-export const inputBasic = style({
+const input = style({
   height: '3.5rem',
   backgroundColor: defaultTheme.color.input,
   borderRadius: defaultTheme.borderRadius.medium,
-  padding: '12px',
+  padding: defaultTheme.layoutPadding.mobile.paddingContent,
 });
 
-export const checkButton = style({
-  position: 'absolute',
-  right: '.5rem',
-  top: '50%',
-  transform: 'translate(-50%,-50%)',
-  color: defaultTheme.color.lightBlue,
-});
+const checkButton = style([
+  absoluteCenter,
+  {
+    right: '.5rem',
+    top: '50%',
+    color: defaultTheme.color.lightBlue,
+  },
+]);
 
-export const validation = style({
+const validationMessage = style({
   color: defaultTheme.color.orange,
   paddingLeft: '.5rem',
 });
+
+export const authInput = {
+  inputWrapper,
+  input,
+  checkButton,
+  validationMessage,
+};

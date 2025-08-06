@@ -1,7 +1,4 @@
-import { defaultTheme } from '@/styles/theme.css';
+import { mainContainer } from '@/styles/global-styles.css';
 import { style } from '@vanilla-extract/css';
 
-export const mainContainer = style({
-  padding: defaultTheme.layoutPadding.mobile.paddingLeft,
-  height: '100%',
-});
+export const loginContainer = style([mainContainer]);

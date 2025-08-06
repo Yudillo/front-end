@@ -1,26 +1,24 @@
-import { contentWrapper } from './../common/AuthInput.css';
+import { flexJustifyCenter } from '@/styles/global-styles.css';
+import { authInput } from './../common/AuthInput.css';
 import { defaultTheme } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
-export const loginSection = style({
-  height: 'calc(100% - 106px)',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-});
+const forgetPasswordWrapper = style([authInput.inputWrapper]);
 
-export const extendContentWrapper = style([contentWrapper]);
-
-export const forgotPasswordLink = style({
+const forgetPasswordLink = style({
   color: defaultTheme.color.orange,
   marginBottom: '.5rem',
 });
 
-export const signupWrapper = style({
-  display: 'flex',
-  justifyContent: 'center',
-});
+const signupWrapper = style([flexJustifyCenter]);
 
-export const signupLink = style({
+const signupLink = style({
   color: defaultTheme.color.lightBlue,
 });
+
+export const loginForm = {
+  forgetPasswordWrapper,
+  forgetPasswordLink,
+  signupWrapper,
+  signupLink,
+};

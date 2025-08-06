@@ -1,17 +1,17 @@
 import Button from '@/components/common/button/Button';
-import * as s from './Login.css';
-// import * as a from '@/components/auth/common/AuthInput.css';
 import AuthInput from '../common/AuthInput';
 import { useState } from 'react';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import { validationValue } from '@/utils/validation';
 import { Link } from '@tanstack/react-router';
+import type { AuthInputType } from '@/types/AuthInput';
+import { authCommon } from '../common/AuthCommon.css';
+import { loginForm } from './Login.css';
 
 export default function Login() {
-  const [inputValue, setInputValue] = useState<{
-    email: string;
-    password: string;
-  }>({
+  const [inputValue, setInputValue] = useState<
+    Pick<AuthInputType, 'email' | 'password'>
+  >({
     email: '',
     password: '',
   });
@@ -41,7 +41,7 @@ export default function Login() {
   };
 
   return (
-    <section className={s.loginSection}>
+    <section className={authCommon.authSection}>
       <form onSubmit={handleSubmitLogin}>
         <AuthInput
           name='email'
@@ -51,7 +51,7 @@ export default function Login() {
           onChange={(e) =>
             setInputValue((prev) => ({ ...prev, email: e.target.value }))
           }
-          message={validation.email ? '' : AUTH_MESSAGE.email}
+          validationMessage={validation.email ? '' : AUTH_MESSAGE.email}
         />
         <AuthInput
           name='password'
@@ -64,18 +64,18 @@ export default function Login() {
               password: e.target.value,
             }))
           }
-          message={validation.password ? '' : AUTH_MESSAGE.password}
+          validationMessage={validation.password ? '' : AUTH_MESSAGE.password}
         />
-        <div className={s.extendContentWrapper}>
-          <Link className={s.forgotPasswordLink} to='/reset-password'>
+        <div className={loginForm.forgetPasswordWrapper}>
+          <Link className={loginForm.forgetPasswordLink} to='/reset-password'>
             비밀번호를 잊으셨나요?
           </Link>
         </div>
         <Button title='로그인' type='submit' />
       </form>
 
-      <div className={s.signupWrapper}>
-        <Link className={s.signupLink} to='/signup'>
+      <div className={loginForm.signupWrapper}>
+        <Link className={loginForm.signupLink} to='/signup'>
           계정이 없나요? 회원가입
         </Link>
       </div>

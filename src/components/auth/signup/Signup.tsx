@@ -2,19 +2,14 @@ import React, { useState } from 'react';
 import AuthInput from '../common/AuthInput';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import Button from '@/components/common/button/Button';
-import * as s from './Signup.css';
 import { validationValue } from '@/utils/validation';
 import { useNavigate } from '@tanstack/react-router';
+import type { AuthInputType } from '@/types/AuthInput';
+import { authCommon } from '../common/AuthCommon.css';
 
 export default function Signup() {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState<{
-    email: string;
-    code: string;
-    password: string;
-    passwordCheck: string;
-    nickname: string;
-  }>({
+  const [inputValue, setInputValue] = useState<AuthInputType>({
     email: '',
     code: '',
     password: '',
@@ -48,33 +43,7 @@ export default function Signup() {
     console.log('인증확인');
   };
 
-  const inputs: {
-    key: keyof typeof inputValue;
-    type: React.HTMLInputTypeAttribute;
-    placeholder: string;
-    checkButton?: string;
-    onClick?: () => void;
-  }[] = [
-    {
-      key: 'email',
-      type: 'email',
-      placeholder: '이메일',
-      checkButton: '코드전송',
-      onClick: handlePostCode,
-    },
-    {
-      key: 'code',
-      type: 'text',
-      placeholder: '인증코드',
-      checkButton: '인증확인',
-      onClick: handlePostVerifyCode,
-    },
-    { key: 'password', type: 'password', placeholder: '비밀번호' },
-    { key: 'passwordCheck', type: 'password', placeholder: '비밀번호 확인' },
-    { key: 'nickname', type: 'text', placeholder: '닉네임' },
-  ];
-
-  const handleSubmit = (e: React.MouseEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const form = new FormData();
@@ -112,25 +81,58 @@ export default function Signup() {
     }
   };
 
+  const handleChangeInputValue = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key: string,
+  ) => {
+    setInputValue((prev) => ({ ...prev, [key]: e.target.value }));
+  };
+
+  const inputs: {
+    key: keyof typeof inputValue;
+    type: React.HTMLInputTypeAttribute;
+    placeholder: string;
+    checkButton?: string;
+    onClick?: () => void;
+  }[] = [
+    {
+      key: 'email',
+      type: 'email',
+      placeholder: '이메일',
+      checkButton: '코드전송',
+      onClick: handlePostCode,
+    },
+    {
+      key: 'code',
+      type: 'text',
+      placeholder: '인증코드',
+      checkButton: '인증확인',
+      onClick: handlePostVerifyCode,
+    },
+    { key: 'password', type: 'password', placeholder: '비밀번호' },
+    { key: 'passwordCheck', type: 'password', placeholder: '비밀번호 확인' },
+    { key: 'nickname', type: 'text', placeholder: '닉네임' },
+  ];
+
   return (
-    <section className={s.signupSection}>
-      <form className={s.formGapSignup} onSubmit={handleSubmit}>
+    <section className={authCommon.authSection}>
+      <form className={authCommon.formRow} onSubmit={handleSubmit}>
         <div>
-          {inputs.map(({ key, type, placeholder, checkButton, onClick }) => (
-            <AuthInput
-              key={key}
-              name={key}
-              type={type}
-              placeholder={placeholder}
-              value={inputValue[key]}
-              onChange={(e) =>
-                setInputValue((prev) => ({ ...prev, [key]: e.target.value }))
-              }
-              message={validation[key] ? '' : AUTH_MESSAGE[key]}
-              checkButton={checkButton}
-              onClick={onClick}
-            />
-          ))}
+          {inputs.map(
+            ({ key, type, placeholder, checkButton, onClick }, idx) => (
+              <AuthInput
+                key={key + idx}
+                name={key}
+                type={type}
+                placeholder={placeholder}
+                value={inputValue[key]}
+                onChange={(e) => handleChangeInputValue(e, key)}
+                validationMessage={validation[key] ? '' : AUTH_MESSAGE[key]}
+                checkButton={checkButton}
+                onClick={onClick}
+              />
+            ),
+          )}
         </div>
         <Button type='submit' title='회원가입' />
       </form>

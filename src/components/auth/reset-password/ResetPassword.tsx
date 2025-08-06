@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import AuthInput from '../common/AuthInput';
-import * as s from './ResetPassword.css';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import Button from '@/components/common/button/Button';
 import { validationValue } from '@/utils/validation';
 import { useNavigate } from '@tanstack/react-router';
+import type { AuthInputType } from '@/types/AuthInput';
+import { authCommon } from '../common/AuthCommon.css';
 
 export default function ResetPassword() {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState<{
-    password: string;
-    passwordCheck: string;
-  }>({
+  const [inputValue, setInputValue] = useState<
+    Pick<AuthInputType, 'password' | 'passwordCheck'>
+  >({
     password: '',
     passwordCheck: '',
   });
@@ -37,7 +37,7 @@ export default function ResetPassword() {
     navigate({ to: '/login' });
   };
 
-  const handleSubmit = (e: React.MouseEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const form = new FormData();
@@ -62,8 +62,8 @@ export default function ResetPassword() {
   };
 
   return (
-    <section className={s.ResetPasswordSection}>
-      <form className={s.formGapResetPassword} onSubmit={handleSubmit}>
+    <section className={authCommon.authSection}>
+      <form className={authCommon.formRow} onSubmit={handleSubmit}>
         <div>
           {inputs.map(({ key, type, placeholder }) => (
             <AuthInput
@@ -75,7 +75,7 @@ export default function ResetPassword() {
               onChange={(e) =>
                 setInputValue((prev) => ({ ...prev, [key]: e.target.value }))
               }
-              message={validation[key] ? '' : AUTH_MESSAGE[key]}
+              validationMessage={validation[key] ? '' : AUTH_MESSAGE[key]}
             />
           ))}
         </div>

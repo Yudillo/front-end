@@ -4,7 +4,7 @@ import ResetPassword from '@/components/auth/reset-password/ResetPassword';
 
 export default function ResetPasswordPage() {
   return (
-    <main className={s.extendMainContainer}>
+    <main className={s.resetPasswordContainer}>
       <LogoImg />
       <ResetPassword />
     </main>
