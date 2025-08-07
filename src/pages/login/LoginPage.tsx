@@ -4,7 +4,7 @@ import * as s from './LoginPage.css';
 
 export default function LoginPage() {
   return (
-    <main className={s.mainContainer}>
+    <main className={s.loginContainer}>
       <LogoImg />
       <Login />
     </main>

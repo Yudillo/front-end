@@ -5,8 +5,8 @@ import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import { validationValue } from '@/utils/validation';
 import { Link } from '@tanstack/react-router';
 import type { AuthInputType } from '@/types/AuthInput';
-import { authCommon } from '../common/AuthCommon.css';
 import { loginForm } from './Login.css';
+import { authCommon } from '../common/AuthCommon.css';
 
 export default function Login() {
   const [inputValue, setInputValue] = useState<
@@ -73,7 +73,6 @@ export default function Login() {
         </div>
         <Button title='로그인' type='submit' />
       </form>
-
       <div className={loginForm.signupWrapper}>
         <Link className={loginForm.signupLink} to='/signup'>
           계정이 없나요? 회원가입

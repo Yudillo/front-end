@@ -1,4 +1,7 @@
-import { flexJustifyCenter } from '@/styles/global-styles.css';
+import {
+  flexAlignItemsCenter,
+  flexJustifyCenter,
+} from '@/styles/global-styles.css';
 import { authInput } from './../common/AuthInput.css';
 import { defaultTheme } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
@@ -10,7 +13,7 @@ const forgetPasswordLink = style({
   marginBottom: '.5rem',
 });
 
-const signupWrapper = style([flexJustifyCenter]);
+const signupWrapper = style([flexJustifyCenter, flexAlignItemsCenter]);
 
 const signupLink = style({
   color: defaultTheme.color.lightBlue,
