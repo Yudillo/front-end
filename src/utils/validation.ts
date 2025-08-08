@@ -1,9 +1,6 @@
-import type { AUTH_MESSAGE } from '@/constants/validationMessage';
+import type { AuthInputType } from '@/types/AuthInput';
 
-export const validationValue = (
-  key: keyof typeof AUTH_MESSAGE,
-  value: string,
-) => {
+export const validationValue = (key: keyof AuthInputType, value: string) => {
   const regex = {
     email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
     code: /^\d{6}$/,

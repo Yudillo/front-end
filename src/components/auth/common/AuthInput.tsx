@@ -1,27 +1,27 @@
 import type React from 'react';
 import { authInput } from './AuthInput.css';
+import AuthCheckButton from './AuthCheckButton';
 
 interface AuthInputProps {
-  name: string;
-  type: React.HTMLInputTypeAttribute;
-  placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  key: string;
   validationMessage: string;
-  checkButton?: string;
+  checkButtonTitle?: string;
   onClick?: () => void;
 }
 
+type AuthInputType = React.InputHTMLAttributes<HTMLInputElement> &
+  AuthInputProps;
+
 export default function AuthInput({
-  name,
+  key: key,
   type,
   placeholder,
   value,
   validationMessage,
   onChange,
-  checkButton,
+  checkButtonTitle,
   onClick,
-}: AuthInputProps) {
+}: AuthInputType) {
   return (
     <div className={authInput.inputWrapper}>
       <input
@@ -29,17 +29,14 @@ export default function AuthInput({
         type={type}
         placeholder={placeholder}
         value={value}
-        name={name}
-        onChange={(e) => onChange(e)}
+        key={key}
+        onChange={onChange}
       />
-      {checkButton && (
-        <button
-          className={authInput.checkButton}
-          type='button'
+      {checkButtonTitle && (
+        <AuthCheckButton
+          checkButtonTitle={checkButtonTitle}
           onClick={onClick}
-        >
-          {checkButton}
-        </button>
+        />
       )}
       {validationMessage && (
         <p className={authInput.validationMessage}>{validationMessage}</p>

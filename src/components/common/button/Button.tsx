@@ -1,19 +1,17 @@
 import type React from 'react';
-import * as s from './Button.css';
+import { buttonVariant } from './Button.css';
 
-interface ButtonProps {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
   type: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
-  backColor?: 'basic' | 'signup';
-  color?: 'basic' | 'signup';
+  buttonStyle?: 'basic' | 'signup';
 }
 
-export default function Button({ title, type, backColor, color }: ButtonProps) {
+export default function Button({ title, type, buttonStyle }: ButtonProps) {
   return (
-    <div className={s.buttonWrapper}>
-      <button className={s.button({ backColor, color })} type={type}>
-        {title}
-      </button>
-    </div>
+    <button className={buttonVariant.button({ buttonStyle })} type={type}>
+      {title}
+    </button>
   );
 }

@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import AuthInput from '../common/AuthInput';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
-import Button from '@/components/common/button/Button';
 import { validationValue } from '@/utils/validation';
 import { useNavigate } from '@tanstack/react-router';
 import type { AuthInputType } from '@/types/AuthInput';
 import { authCommon } from '../common/AuthCommon.css';
+import ButtonWrapper from '@/components/common/button/ButtonWrapper';
+import ButtonBasic from '@/components/common/button/ButtonBasic';
+
+interface InputProps {
+  key: keyof AuthInputType;
+  checkButton?: string;
+  onClick?: () => void;
+}
+
+type InputType = React.InputHTMLAttributes<HTMLInputElement> & InputProps;
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -64,13 +73,7 @@ export default function Signup() {
       nickname: !!nicknameValidation,
     }));
 
-    if (
-      emailValidation &&
-      codeValidation &&
-      passwordValidation &&
-      passwordCheckValidation &&
-      nicknameValidation
-    ) {
+    if (Object.values(validation).every(Boolean)) {
       form.append('email', inputValue.email);
       form.append('password', inputValue.password);
       form.append('nickname', inputValue.nickname);
@@ -81,20 +84,12 @@ export default function Signup() {
     }
   };
 
-  const handleChangeInputValue = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    key: string,
-  ) => {
-    setInputValue((prev) => ({ ...prev, [key]: e.target.value }));
+  const handleChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
-  const inputs: {
-    key: keyof typeof inputValue;
-    type: React.HTMLInputTypeAttribute;
-    placeholder: string;
-    checkButton?: string;
-    onClick?: () => void;
-  }[] = [
+  const inputs: InputType[] = [
     {
       key: 'email',
       type: 'email',
@@ -119,22 +114,27 @@ export default function Signup() {
       <form className={authCommon.formRow} onSubmit={handleSubmit}>
         <div>
           {inputs.map(
-            ({ key, type, placeholder, checkButton, onClick }, idx) => (
+            (
+              { key: key, type, placeholder, checkButton, onClick: onClick },
+              idx,
+            ) => (
               <AuthInput
                 key={key + idx}
                 name={key}
                 type={type}
                 placeholder={placeholder}
                 value={inputValue[key]}
-                onChange={(e) => handleChangeInputValue(e, key)}
+                onChange={handleChangeInputValue}
                 validationMessage={validation[key] ? '' : AUTH_MESSAGE[key]}
-                checkButton={checkButton}
+                checkButtonTitle={checkButton}
                 onClick={onClick}
               />
             ),
           )}
         </div>
-        <Button type='submit' title='회원가입' />
+        <ButtonWrapper>
+          <ButtonBasic title='회원가입' />
+        </ButtonWrapper>
       </form>
     </section>
   );

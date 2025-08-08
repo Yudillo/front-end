@@ -12,6 +12,18 @@ globalStyle('*, html, body', {
   }, {}),
 });
 
+export const mainContainer = style({
+  height: '100%',
+  '@media': Object.keys(MEDIA_QUERY).reduce((acc, key) => {
+    const breakpoint = key as keyof typeof MEDIA_QUERY;
+    return {
+      ...acc,
+      [MEDIA_QUERY[breakpoint]]:
+        defaultTheme.layoutPadding[breakpoint].paddingContainer,
+    };
+  }, {}),
+});
+
 export const flexAlignItemsCenter = style({
   display: 'flex',
   alignItems: 'center',
@@ -30,9 +42,4 @@ export const flexBetween = style({
 export const absoluteCenter = style({
   position: 'absolute',
   transform: 'translate(-50%,-50%)',
-});
-
-export const mainContainer = style({
-  padding: defaultTheme.layoutPadding.mobile.paddingContainer,
-  height: '100%',
 });

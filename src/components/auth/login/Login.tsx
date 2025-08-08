@@ -1,4 +1,3 @@
-import Button from '@/components/common/button/Button';
 import AuthInput from '../common/AuthInput';
 import { useState } from 'react';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
@@ -7,6 +6,8 @@ import { Link } from '@tanstack/react-router';
 import type { AuthInputType } from '@/types/AuthInput';
 import { loginForm } from './Login.css';
 import { authCommon } from '../common/AuthCommon.css';
+import ButtonWrapper from '@/components/common/button/ButtonWrapper';
+import ButtonBasic from '@/components/common/button/ButtonBasic';
 
 export default function Login() {
   const [inputValue, setInputValue] = useState<
@@ -34,7 +35,7 @@ export default function Login() {
       password: !!passwordValidation,
     }));
 
-    if (emailValidation && passwordValidation) {
+    if (Object.values(validation).every(Boolean)) {
       form.append('email', inputValue.email);
       form.append('password', inputValue.password);
     }
@@ -44,7 +45,7 @@ export default function Login() {
     <section className={authCommon.authSection}>
       <form onSubmit={handleSubmitLogin}>
         <AuthInput
-          name='email'
+          key='email'
           type='email'
           placeholder='이메일'
           value={inputValue.email}
@@ -54,7 +55,7 @@ export default function Login() {
           validationMessage={validation.email ? '' : AUTH_MESSAGE.email}
         />
         <AuthInput
-          name='password'
+          key='password'
           type='password'
           placeholder='비밀번호'
           value={inputValue.password}
@@ -71,7 +72,9 @@ export default function Login() {
             비밀번호를 잊으셨나요?
           </Link>
         </div>
-        <Button title='로그인' type='submit' />
+        <ButtonWrapper>
+          <ButtonBasic title='로그인' />
+        </ButtonWrapper>
       </form>
       <div className={loginForm.signupWrapper}>
         <Link className={loginForm.signupLink} to='/signup'>

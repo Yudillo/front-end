@@ -4,9 +4,9 @@ import * as s from './LoginPage.css';
 
 export default function LoginPage() {
   return (
-    <main className={s.loginContainer}>
+    <section className={s.loginContainer}>
       <LogoImg />
       <Login />
-    </main>
+    </section>
   );
 }

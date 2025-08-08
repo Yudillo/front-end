@@ -7,9 +7,9 @@ export default function LayoutMobile() {
   return (
     <>
       <Header />
-      <div className={s.contentsContainer}>
+      <main className={s.contentsContainer}>
         <Outlet />
-      </div>
+      </main>
       {/* <NavBar /> */}
     </>
   );

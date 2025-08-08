@@ -4,9 +4,9 @@ import Signup from '@/components/auth/signup/Signup';
 
 export default function SignupPage() {
   return (
-    <main className={s.signupContainer}>
+    <section className={s.signupContainer}>
       <LogoImg />
       <Signup />
-    </main>
+    </section>
   );
 }
