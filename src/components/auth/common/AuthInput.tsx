@@ -33,10 +33,12 @@ export default function AuthInput({
         onChange={onChange}
       />
       {checkButtonTitle && (
-        <AuthCheckButton
-          checkButtonTitle={checkButtonTitle}
-          onClick={onClick}
-        />
+        <div>
+          <AuthCheckButton
+            checkButtonTitle={checkButtonTitle}
+            onClick={onClick}
+          />
+        </div>
       )}
       {validationMessage && (
         <p className={authInput.validationMessage}>{validationMessage}</p>

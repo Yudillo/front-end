@@ -4,13 +4,17 @@ import { buttonVariant } from './Button.css';
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
-  type: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
   buttonStyle?: 'basic' | 'signup';
 }
 
-export default function Button({ title, type, buttonStyle }: ButtonProps) {
+export default function Button({
+  title,
+  type,
+  buttonStyle,
+  ...rest
+}: ButtonProps) {
   return (
-    <button className={buttonVariant.button({ buttonStyle })} type={type}>
+    <button className={buttonVariant.button({ buttonStyle })} {...rest}>
       {title}
     </button>
   );

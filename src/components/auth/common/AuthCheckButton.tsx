@@ -1,3 +1,4 @@
+import type React from 'react';
 import { authCheckButton } from './AuthCheckButton.css';
 
 interface AuthCheckButtonProps {
@@ -10,16 +11,16 @@ type AuthCheckButtonType = React.ButtonHTMLAttributes<HTMLButtonElement> &
 export default function AuthCheckButton({
   checkButtonTitle,
   onClick,
+  ...rest
 }: AuthCheckButtonType) {
   return (
-    <div>
-      <button
-        className={authCheckButton.checkButton}
-        type='button'
-        onClick={onClick}
-      >
-        {checkButtonTitle}
-      </button>
-    </div>
+    <button
+      className={authCheckButton.checkButton}
+      type='button'
+      onClick={onClick}
+      {...rest}
+    >
+      {checkButtonTitle}
+    </button>
   );
 }
