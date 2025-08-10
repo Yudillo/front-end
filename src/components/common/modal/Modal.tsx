@@ -1,4 +1,5 @@
 import * as s from './Modal.css';
+import { createPortal } from 'react-dom';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import useOutsideClick from '@/hooks/useOutsideClick';
 
@@ -29,7 +30,7 @@ export default function Modal({
 }: ModalProps) {
   const ref = useOutsideClick(() => onClose());
 
-  return (
+  return createPortal(
     <>
       {isOpen && (
         <>
@@ -66,6 +67,7 @@ export default function Modal({
           </section>
         </>
       )}
-    </>
+    </>,
+    document.body,
   );
 }

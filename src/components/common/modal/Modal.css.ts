@@ -51,20 +51,3 @@ export const modalButtonWrapper = style({
   gap: '1rem',
   justifyContent: 'center',
 });
-
-export const modalButton = recipe({
-  base: {
-    borderRadius: defaultTheme.borderRadius.medium,
-    color: defaultTheme.color.white,
-    padding: '.3rem .7rem',
-  },
-  variants: {
-    backColor: {
-      check: { backgroundColor: defaultTheme.color.lightBlue },
-      cancel: { backgroundColor: defaultTheme.color.orange },
-    },
-  },
-  defaultVariants: {
-    backColor: 'check',
-  },
-});
