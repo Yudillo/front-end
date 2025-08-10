@@ -1,9 +1,10 @@
-import * as s from './Modal.css';
-import { createPortal } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import useOutsideClick from '@/hooks/useOutsideClick';
+import { modal } from './Modal.css';
+import ModalButton from './ModalButton';
 
-interface ModalProps {
+export interface ModalProps {
   children: React.ReactNode;
   isOpen: boolean;
   isConfirm?: boolean;
@@ -18,7 +19,7 @@ interface ModalProps {
 export default function Modal({
   children,
   isOpen,
-  isConfirm = true,
+  isConfirm,
   onClose = (e?: React.SyntheticEvent) => {
     if (e) {
       e.preventDefault();
@@ -26,48 +27,44 @@ export default function Modal({
     }
   },
   onCheck = onClose,
-  onCancel,
+  onCancel = onClose,
 }: ModalProps) {
+  const modalRoot = document.getElementById('modal-root');
   const ref = useOutsideClick(() => onClose());
 
-  return createPortal(
+  if (!modalRoot) return;
+
+  return ReactDOM.createPortal(
     <>
       {isOpen && (
-        <>
-          <div className={s.modalOverlay}></div>
-          <section className={s.modalSection} ref={ref}>
-            <header className={s.modalHeader}>
-              <button
-                type='button'
-                className={s.modalXMarkButton}
-                onClick={onClose}
-              >
-                <XMarkIcon className={s.modalXMarkIcon} />
-              </button>
-            </header>
-            <main className={s.modalMain}>{children}</main>
-            <div className={s.modalButtonWrapper}>
-              <button
-                className={s.modalButton({ backColor: 'check' })}
-                type='button'
-                onClick={onCheck}
-              >
-                확인
-              </button>
-              {isConfirm && (
-                <button
-                  className={s.modalButton({ backColor: 'cancel' })}
-                  type='button'
-                  onClick={onCancel}
-                >
-                  취소
-                </button>
-              )}
-            </div>
-          </section>
-        </>
+        <section className={modal.modalSection} ref={ref}>
+          <header className={modal.modalHeader}>
+            <button
+              type='button'
+              className={modal.modalXMarkButton}
+              onClick={onClose}
+            >
+              <XMarkIcon className={modal.modalXMarkIcon} />
+            </button>
+          </header>
+          <main className={modal.modalMain}>{children}</main>
+          <div className={modal.modalButtonWrapper}>
+            <ModalButton
+              variantStyle='check'
+              buttonConfirm='확인'
+              onClick={onCheck}
+            />
+            {isConfirm && (
+              <ModalButton
+                variantStyle='cancel'
+                buttonConfirm='취소'
+                onClick={onCancel}
+              />
+            )}
+          </div>
+        </section>
       )}
     </>,
-    document.body,
+    modalRoot,
   );
 }
