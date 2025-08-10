@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
-// import logo from '../logo.svg'
-import logo from '../assets/yudilloLogo.svg';
 import '../styles/global-styles.css';
+import Index from '@/pages/index/Index';
 import { useModal } from '@/hooks/useModal';
 import Modal from '@/components/common/modal/Modal';
 
@@ -52,4 +51,5 @@ function App() {
       </Modal>
     </div>
   );
+  return <Index />;
 }

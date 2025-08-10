@@ -9,7 +9,8 @@ export const defaultTheme = createGlobalTheme(':root', {
     black: '#000000',
     beige: '#FFECDB',
     orange: '#FF9149',
-    basic: '#5D758C',
+    basic: '#6B7582',
+    input: '#F0F2F5',
   },
   borderRadius: {
     small: '8px',
@@ -23,9 +24,9 @@ export const defaultTheme = createGlobalTheme(':root', {
     mobile: { maxWidth: '768px' },
   },
   layoutPadding: {
-    desktop: { paddingLeft: '20px', paddingRight: '20px' },
-    tablet: { paddingLeft: '10px', paddingRight: '10px' },
-    mobile: { paddingLeft: '5px', paddingRight: '5px' },
+    desktop: { paddingContainer: '20px', paddingContent: '12px' },
+    tablet: { paddingContainer: '10px', paddingContent: '12px' },
+    mobile: { paddingContainer: '5px', paddingContent: '12px' },
   },
   headerPadding: {
     desktop: { padding: '16px' },
