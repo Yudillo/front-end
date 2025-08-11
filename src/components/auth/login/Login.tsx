@@ -45,7 +45,7 @@ export default function Login() {
     <section className={authCommon.authSection}>
       <form onSubmit={handleSubmitLogin}>
         <AuthInput
-          key='email'
+          name='email'
           type='email'
           placeholder='이메일'
           value={inputValue.email}
@@ -55,7 +55,7 @@ export default function Login() {
           validationMessage={validation.email ? '' : AUTH_MESSAGE.email}
         />
         <AuthInput
-          key='password'
+          name='password'
           type='password'
           placeholder='비밀번호'
           value={inputValue.password}
