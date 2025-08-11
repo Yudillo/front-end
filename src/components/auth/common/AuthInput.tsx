@@ -13,7 +13,7 @@ type AuthInputType = React.InputHTMLAttributes<HTMLInputElement> &
   AuthInputProps;
 
 export default function AuthInput({
-  key: key,
+  key,
   type,
   placeholder,
   value,
@@ -29,7 +29,7 @@ export default function AuthInput({
         type={type}
         placeholder={placeholder}
         value={value}
-        key={key}
+        name={key}
         onChange={onChange}
       />
       {checkButtonTitle && (
