@@ -1,4 +1,4 @@
-import type { AuthInputType } from '@/types/AuthInput';
+import type { AuthInputType } from '@/types/authInput';
 
 export const validationValue = (key: keyof AuthInputType, value: string) => {
   const regex = {

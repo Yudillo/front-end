@@ -3,7 +3,7 @@ import AuthInput from '../common/AuthInput';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import { validationValue } from '@/utils/validation';
 import { useNavigate } from '@tanstack/react-router';
-import type { AuthInputType } from '@/types/AuthInput';
+import type { AuthInputType } from '@/types/authInput';
 import { authCommon } from '../common/AuthCommon.css';
 import ButtonWrapper from '@/components/common/button/ButtonWrapper';
 import ButtonBasic from '@/components/common/button/ButtonBasic';
@@ -61,7 +61,9 @@ export default function Signup() {
     const codeValidation = validationValue('code', inputValue.code);
     const passwordValidation = validationValue('password', inputValue.password);
     const passwordCheckValidation =
-      inputValue.password === inputValue.passwordCheck;
+      inputValue.password === inputValue.passwordCheck
+        ? validationValue('passwordCheck', inputValue.passwordCheck)
+        : false;
     const nicknameValidation = validationValue('nickname', inputValue.nickname);
 
     setValidation((prev) => ({

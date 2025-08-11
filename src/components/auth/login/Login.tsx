@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import { validationValue } from '@/utils/validation';
 import { Link } from '@tanstack/react-router';
-import type { AuthInputType } from '@/types/AuthInput';
+import type { AuthInputType } from '@/types/authInput';
 import { loginForm } from './Login.css';
 import { authCommon } from '../common/AuthCommon.css';
 import ButtonWrapper from '@/components/common/button/ButtonWrapper';
