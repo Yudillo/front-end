@@ -42,4 +42,9 @@ export const defaultTheme = createGlobalTheme(':root', {
     small: { width: '20px', height: '20px' },
     basic: { width: '24px', height: '24px' },
   },
+  logoSize: {
+    desktop: '150px',
+    tablet: '150px',
+    mobile: '106px',
+  },
 });

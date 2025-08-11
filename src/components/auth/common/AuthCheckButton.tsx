@@ -10,16 +10,10 @@ type AuthCheckButtonType = React.ButtonHTMLAttributes<HTMLButtonElement> &
 
 export default function AuthCheckButton({
   checkButtonTitle,
-  onClick,
   ...rest
 }: AuthCheckButtonType) {
   return (
-    <button
-      className={authCheckButton.checkButton}
-      type='button'
-      onClick={onClick}
-      {...rest}
-    >
+    <button {...rest} className={authCheckButton.checkButton} type='button'>
       {checkButtonTitle}
     </button>
   );
