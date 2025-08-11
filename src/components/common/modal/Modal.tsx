@@ -3,6 +3,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import useOutsideClick from '@/hooks/useOutsideClick';
 import { modal } from './Modal.css';
 import ModalButton from './ModalButton';
+import { useEffect } from 'react';
 
 export interface ModalProps {
   children: React.ReactNode;
@@ -29,8 +30,19 @@ export default function Modal({
   onCheck = onClose,
   onCancel = onClose,
 }: ModalProps) {
-  const modalRoot = document.getElementById('modal-root');
+  const modalRoot = document?.getElementById('modal-root');
   const ref = useOutsideClick(() => onClose());
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   if (!modalRoot) return;
 
