@@ -13,9 +13,9 @@ export const defaultTheme = createGlobalTheme(':root', {
     input: '#F0F2F5',
   },
   borderRadius: {
-    small: '8px',
-    medium: '12px',
-    large: '30px',
+    8: '8px',
+    12: '12px',
+    30: '30px',
     half: '50%',
   },
   layoutWidth: {
@@ -23,24 +23,21 @@ export const defaultTheme = createGlobalTheme(':root', {
     tablet: { maxWidth: '1023px' },
     mobile: { maxWidth: '768px' },
   },
+  spacing: {
+    5: '5px',
+    10: '10px',
+    12: '12px',
+    16: '16px',
+    20: '20px',
+  },
+  iconSize: {
+    20: '20px',
+    24: '24px',
+  },
   layoutPadding: {
     desktop: { paddingContainer: '20px', paddingContent: '12px' },
     tablet: { paddingContainer: '10px', paddingContent: '12px' },
     mobile: { paddingContainer: '5px', paddingContent: '12px' },
-  },
-  headerPadding: {
-    desktop: { padding: '16px' },
-    tablet: { padding: '10px' },
-    mobile: { padding: '5px' },
-  },
-  headerIcon: {
-    desktop: { width: '24px', height: '24px' },
-    tablet: { width: '24px', height: '24px' },
-    mobile: { width: '24px', height: '24px' },
-  },
-  iconSize: {
-    small: { width: '20px', height: '20px' },
-    basic: { width: '24px', height: '24px' },
   },
   logoSize: {
     desktop: '150px',

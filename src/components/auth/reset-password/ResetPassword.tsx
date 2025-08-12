@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import {
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+  type InputHTMLAttributes,
+} from 'react';
 import AuthInput from '../common/AuthInput';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import { validationValue } from '@/utils/validation';
@@ -13,7 +18,7 @@ interface InputProps {
   checkButton?: string;
 }
 
-type InputType = React.InputHTMLAttributes<HTMLInputElement> & InputProps;
+type InputType = InputHTMLAttributes<HTMLInputElement> & InputProps;
 
 export default function ResetPassword() {
   const navigate = useNavigate();
@@ -36,7 +41,7 @@ export default function ResetPassword() {
     navigate({ to: '/login' });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const form = new FormData();
@@ -60,7 +65,7 @@ export default function ResetPassword() {
     }
   };
 
-  const handleChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };

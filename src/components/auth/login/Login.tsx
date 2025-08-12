@@ -1,5 +1,5 @@
 import AuthInput from '../common/AuthInput';
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import { validationValue } from '@/utils/validation';
 import { Link } from '@tanstack/react-router';
@@ -21,7 +21,7 @@ export default function Login() {
     password: boolean;
   }>({ email: true, password: true });
 
-  const handleSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const form = new FormData();

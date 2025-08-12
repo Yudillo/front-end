@@ -5,7 +5,7 @@ const button = recipe({
   base: {
     width: '100%',
     height: '3.5rem',
-    borderRadius: defaultTheme.borderRadius.medium,
+    borderRadius: defaultTheme.borderRadius[12],
   },
   variants: {
     buttonStyle: {

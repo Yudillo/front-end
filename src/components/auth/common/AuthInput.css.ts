@@ -4,7 +4,7 @@ import { style } from '@vanilla-extract/css';
 const inputWrapper = style({
   position: 'relative',
   width: '100%',
-  padding: defaultTheme.layoutPadding.mobile.paddingContent,
+  padding: defaultTheme.spacing[12],
   display: 'grid',
   gap: '5px',
 });
@@ -12,8 +12,8 @@ const inputWrapper = style({
 const input = style({
   height: '3.5rem',
   backgroundColor: defaultTheme.color.input,
-  borderRadius: defaultTheme.borderRadius.medium,
-  padding: defaultTheme.layoutPadding.mobile.paddingContent,
+  borderRadius: defaultTheme.borderRadius[12],
+  padding: defaultTheme.spacing[12],
 });
 
 const validationMessage = style({
