@@ -1,19 +1,27 @@
-import { absoluteCenter } from '@/styles/global-styles.css';
 import { defaultTheme } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
-const modalSection = style([
-  absoluteCenter,
-  {
-    overflow: 'hidden',
-    top: '50%',
-    left: '50%',
-    width: '15rem',
-    backgroundColor: defaultTheme.color.white,
-    borderRadius: defaultTheme.borderRadius.medium,
-    border: `0.15rem solid ${defaultTheme.color.lightBlue}`,
-  },
-]);
+const overlaySection = style({
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  overflow: 'hidden',
+  width: '100vw',
+  height: '100vh',
+});
+
+const modalSection = style({
+  overflow: 'hidden',
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%,-50%)',
+  width: '15rem',
+  backgroundColor: defaultTheme.color.white,
+  borderRadius: defaultTheme.borderRadius.md,
+  border: `0.15rem solid ${defaultTheme.color.lightBlue}`,
+  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+});
 
 const modalHeader = style({
   height: '1.5rem',
@@ -46,6 +54,7 @@ const modalButtonWrapper = style({
 });
 
 export const modal = {
+  overlaySection,
   modalSection,
   modalHeader,
   modalXMarkButton,

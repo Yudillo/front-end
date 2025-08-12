@@ -49,32 +49,35 @@ export default function Modal({
   return ReactDOM.createPortal(
     <>
       {isOpen && (
-        <section className={modal.modalSection} ref={ref}>
-          <header className={modal.modalHeader}>
-            <button
-              type='button'
-              className={modal.modalXMarkButton}
-              onClick={onClose}
-            >
-              <XMarkIcon className={modal.modalXMarkIcon} />
-            </button>
-          </header>
-          <main className={modal.modalMain}>{children}</main>
-          <div className={modal.modalButtonWrapper}>
-            <ModalButton
-              variantStyle='check'
-              buttonConfirm='확인'
-              onClick={onCheck}
-            />
-            {isConfirm && (
+        <>
+          <div className={modal.overlaySection}></div>
+          <section className={modal.modalSection} ref={ref}>
+            <header className={modal.modalHeader}>
+              <button
+                type='button'
+                className={modal.modalXMarkButton}
+                onClick={onClose}
+              >
+                <XMarkIcon className={modal.modalXMarkIcon} />
+              </button>
+            </header>
+            <main className={modal.modalMain}>{children}</main>
+            <div className={modal.modalButtonWrapper}>
               <ModalButton
-                variantStyle='cancel'
-                buttonConfirm='취소'
-                onClick={onCancel}
+                variantStyle='check'
+                buttonConfirm='확인'
+                onClick={onCheck}
               />
-            )}
-          </div>
-        </section>
+              {isConfirm && (
+                <ModalButton
+                  variantStyle='cancel'
+                  buttonConfirm='취소'
+                  onClick={onCancel}
+                />
+              )}
+            </div>
+          </section>
+        </>
       )}
     </>,
     modalRoot,

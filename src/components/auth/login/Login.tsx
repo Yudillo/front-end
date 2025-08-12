@@ -39,6 +39,8 @@ export default function Login() {
       password: !!passwordValidation,
     }));
 
+    handleConfirm('메세지');
+
     if (Object.values(validation).every(Boolean)) {
       form.append('email', inputValue.email);
       form.append('password', inputValue.password);

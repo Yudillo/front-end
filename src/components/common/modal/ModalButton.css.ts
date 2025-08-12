@@ -3,7 +3,7 @@ import { recipe, type RecipeVariants } from '@vanilla-extract/recipes';
 
 const button = recipe({
   base: {
-    borderRadius: defaultTheme.borderRadius.medium,
+    borderRadius: defaultTheme.borderRadius.md,
     color: defaultTheme.color.white,
     padding: '.3rem .7rem',
   },
