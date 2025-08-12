@@ -44,6 +44,6 @@ export const headerIconWrapper = style({
 });
 
 export const headerIcon = style({
-  width: defaultTheme.iconSize[24],
-  height: defaultTheme.iconSize[24],
+  width: defaultTheme.iconSize.md,
+  height: defaultTheme.iconSize.md,
 });

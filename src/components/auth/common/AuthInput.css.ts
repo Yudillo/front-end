@@ -12,7 +12,7 @@ const inputWrapper = style({
 const input = style({
   height: '3.5rem',
   backgroundColor: defaultTheme.color.input,
-  borderRadius: defaultTheme.borderRadius[12],
+  borderRadius: defaultTheme.borderRadius.md,
   padding: defaultTheme.spacing[12],
 });
 

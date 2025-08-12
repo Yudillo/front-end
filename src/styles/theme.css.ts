@@ -13,9 +13,9 @@ export const defaultTheme = createGlobalTheme(':root', {
     input: '#F0F2F5',
   },
   borderRadius: {
-    8: '8px',
-    12: '12px',
-    30: '30px',
+    sm: '8px',
+    md: '12px',
+    lg: '30px',
     half: '50%',
   },
   layoutWidth: {
@@ -31,13 +31,8 @@ export const defaultTheme = createGlobalTheme(':root', {
     20: '20px',
   },
   iconSize: {
-    20: '20px',
-    24: '24px',
-  },
-  layoutPadding: {
-    desktop: { paddingContainer: '20px', paddingContent: '12px' },
-    tablet: { paddingContainer: '10px', paddingContent: '12px' },
-    mobile: { paddingContainer: '5px', paddingContent: '12px' },
+    sm: '20px',
+    md: '24px',
   },
   logoSize: {
     desktop: '150px',
