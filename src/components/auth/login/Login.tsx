@@ -74,7 +74,10 @@ export default function Login() {
           validationMessage={validation.password ? '' : AUTH_MESSAGE.password}
         />
         <div className={loginForm.forgetPasswordWrapper}>
-          <Link className={loginForm.forgetPasswordLink} to='/reset-password'>
+          <Link
+            className={loginForm.forgetPasswordLink}
+            to='/auth/reset-password'
+          >
             비밀번호를 잊으셨나요?
           </Link>
         </div>
@@ -83,7 +86,7 @@ export default function Login() {
         </ButtonWrapper>
       </form>
       <div className={loginForm.signupWrapper}>
-        <Link className={loginForm.signupLink} to='/signup'>
+        <Link className={loginForm.signupLink} to='/auth/signup'>
           계정이 없나요? 회원가입
         </Link>
       </div>
