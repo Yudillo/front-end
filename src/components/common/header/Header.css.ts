@@ -1,18 +1,18 @@
-import { mediaQuery } from '@/constants/breakpoint';
+import { MEDIA_QUERY } from '@/constants/breakpoint';
 import { defaultTheme } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const headerContainer = style({
   height: '4rem',
   '@media': {
-    [mediaQuery.desktop]: {
-      padding: defaultTheme.headerPadding.desktop.padding,
+    [MEDIA_QUERY.desktop]: {
+      padding: defaultTheme.spacing[16],
     },
-    [mediaQuery.tablet]: {
-      padding: defaultTheme.headerPadding.tablet.padding,
+    [MEDIA_QUERY.tablet]: {
+      padding: defaultTheme.spacing[10],
     },
-    [mediaQuery.mobile]: {
-      padding: defaultTheme.headerPadding.mobile.padding,
+    [MEDIA_QUERY.mobile]: {
+      padding: defaultTheme.spacing[5],
     },
   },
 });
@@ -44,6 +44,6 @@ export const headerIconWrapper = style({
 });
 
 export const headerIcon = style({
-  width: '1.5rem',
-  height: '1.5rem',
+  width: defaultTheme.iconSize.md,
+  height: defaultTheme.iconSize.md,
 });

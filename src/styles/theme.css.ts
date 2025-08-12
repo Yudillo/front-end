@@ -9,12 +9,13 @@ export const defaultTheme = createGlobalTheme(':root', {
     black: '#000000',
     beige: '#FFECDB',
     orange: '#FF9149',
-    basic: '#5D758C',
+    basic: '#6B7582',
+    input: '#F0F2F5',
   },
   borderRadius: {
-    small: '8px',
-    medium: '12px',
-    large: '30px',
+    sm: '8px',
+    md: '12px',
+    lg: '30px',
     half: '50%',
   },
   layoutWidth: {
@@ -22,23 +23,20 @@ export const defaultTheme = createGlobalTheme(':root', {
     tablet: { maxWidth: '1023px' },
     mobile: { maxWidth: '768px' },
   },
-  layoutPadding: {
-    desktop: { paddingLeft: '20px', paddingRight: '20px' },
-    tablet: { paddingLeft: '10px', paddingRight: '10px' },
-    mobile: { paddingLeft: '5px', paddingRight: '5px' },
-  },
-  headerPadding: {
-    desktop: { padding: '16px' },
-    tablet: { padding: '10px' },
-    mobile: { padding: '5px' },
-  },
-  headerIcon: {
-    desktop: { width: '24px', height: '24px' },
-    tablet: { width: '24px', height: '24px' },
-    mobile: { width: '24px', height: '24px' },
+  spacing: {
+    5: '5px',
+    10: '10px',
+    12: '12px',
+    16: '16px',
+    20: '20px',
   },
   iconSize: {
-    small: { width: '20px', height: '20px' },
-    basic: { width: '24px', height: '24px' },
+    sm: '20px',
+    md: '24px',
+  },
+  logoSize: {
+    desktop: '150px',
+    tablet: '150px',
+    mobile: '106px',
   },
 });
