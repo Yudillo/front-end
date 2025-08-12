@@ -1,8 +1,7 @@
-import type React from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import { buttonVariant } from './Button.css';
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
   buttonStyle?: 'basic' | 'signup';
 }

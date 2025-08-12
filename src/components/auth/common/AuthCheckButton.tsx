@@ -1,20 +1,17 @@
-import type React from 'react';
+import type { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import { authCheckButton } from './AuthCheckButton.css';
 
-interface AuthCheckButtonProps {
-  checkButtonTitle: string;
-}
-
-type AuthCheckButtonType = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  AuthCheckButtonProps;
+type AuthCheckButtonType = PropsWithChildren<
+  ButtonHTMLAttributes<HTMLButtonElement>
+>;
 
 export default function AuthCheckButton({
-  checkButtonTitle,
+  children,
   ...rest
 }: AuthCheckButtonType) {
   return (
     <button {...rest} className={authCheckButton.checkButton} type='button'>
-      {checkButtonTitle}
+      {children}
     </button>
   );
 }

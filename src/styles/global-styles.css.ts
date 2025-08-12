@@ -15,15 +15,17 @@ globalStyle(layoutMobile.container, {
 
 export const mainContainer = style({
   height: '100%',
-  '@media': Object.keys(MEDIA_QUERY).reduce((acc, key) => {
-    const breakpoint = key as keyof typeof MEDIA_QUERY;
-    return {
-      ...acc,
-      [MEDIA_QUERY[breakpoint]]: {
-        padding: defaultTheme.layoutPadding[breakpoint].paddingContainer,
-      },
-    };
-  }, {}),
+  '@media': {
+    [MEDIA_QUERY.desktop]: {
+      padding: defaultTheme.spacing[20],
+    },
+    [MEDIA_QUERY.tablet]: {
+      padding: defaultTheme.spacing[10],
+    },
+    [MEDIA_QUERY.mobile]: {
+      padding: defaultTheme.spacing[5],
+    },
+  },
 });
 
 export const flexAlignItemsCenter = style({

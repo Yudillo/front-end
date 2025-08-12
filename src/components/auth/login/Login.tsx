@@ -1,5 +1,5 @@
 import AuthInput from '../common/AuthInput';
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import { validationValue } from '@/utils/validation';
 import { Link } from '@tanstack/react-router';
@@ -25,7 +25,7 @@ export default function Login() {
     password: boolean;
   }>({ email: true, password: true });
 
-  const handleSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const form = new FormData();
@@ -49,7 +49,7 @@ export default function Login() {
     <section className={authCommon.authSection}>
       <form onSubmit={handleSubmitLogin}>
         <AuthInput
-          key='email'
+          name='email'
           type='email'
           placeholder='이메일'
           value={inputValue.email}
@@ -59,7 +59,7 @@ export default function Login() {
           validationMessage={validation.email ? '' : AUTH_MESSAGE.email}
         />
         <AuthInput
-          key='password'
+          name='password'
           type='password'
           placeholder='비밀번호'
           value={inputValue.password}

@@ -6,13 +6,13 @@ export const headerContainer = style({
   height: '4rem',
   '@media': {
     [MEDIA_QUERY.desktop]: {
-      padding: defaultTheme.headerPadding.desktop.padding,
+      padding: defaultTheme.spacing[16],
     },
     [MEDIA_QUERY.tablet]: {
-      padding: defaultTheme.headerPadding.tablet.padding,
+      padding: defaultTheme.spacing[10],
     },
     [MEDIA_QUERY.mobile]: {
-      padding: defaultTheme.headerPadding.mobile.padding,
+      padding: defaultTheme.spacing[5],
     },
   },
 });
@@ -44,6 +44,6 @@ export const headerIconWrapper = style({
 });
 
 export const headerIcon = style({
-  width: '1.5rem',
-  height: '1.5rem',
+  width: defaultTheme.iconSize.md,
+  height: defaultTheme.iconSize.md,
 });
