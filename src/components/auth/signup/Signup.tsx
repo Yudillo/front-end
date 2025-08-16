@@ -12,6 +12,7 @@ import type { AuthInputType } from '@/types/authInput';
 import { authCommon } from '../common/AuthCommon.css';
 import ButtonWrapper from '@/components/common/button/ButtonWrapper';
 import ButtonBasic from '@/components/common/button/ButtonBasic';
+import { addUser } from '@/supabase/functions/auth/signup/api';
 
 interface InputProps {
   key: keyof AuthInputType;
@@ -81,6 +82,10 @@ export default function Signup() {
     }));
 
     if (Object.values(validation).every(Boolean)) {
+      const email = inputValue.email;
+      const password = inputValue.password;
+      const nickname = inputValue.nickname;
+      addUser({ email, password, nickname });
       form.append('email', inputValue.email);
       form.append('password', inputValue.password);
       form.append('nickname', inputValue.nickname);
