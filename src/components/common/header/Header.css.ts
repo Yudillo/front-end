@@ -2,7 +2,7 @@ import { MEDIA_QUERY } from '@/constants/breakpoint';
 import { defaultTheme } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
-export const headerContainer = style({
+const headerContainer = style({
   height: '4rem',
   '@media': {
     [MEDIA_QUERY.desktop]: {
@@ -17,24 +17,24 @@ export const headerContainer = style({
   },
 });
 
-export const headerLogo = style({
+const headerLogo = style({
   width: '3.5rem',
   height: '3.5rem',
 });
 
-export const headerWrapper = style({
+const headerWrapper = style({
   width: '100%',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
 });
 
-export const headerTitle = style({
+const headerTitle = style({
   fontSize: '1.2rem',
   fontWeight: '600',
 });
 
-export const headerIconWrapper = style({
+const headerIconWrapper = style({
   width: '4.3rem',
   height: 'auto',
   display: 'flex',
@@ -43,7 +43,16 @@ export const headerIconWrapper = style({
   paddingRight: '.8rem',
 });
 
-export const headerIcon = style({
+const headerIcon = style({
   width: defaultTheme.iconSize.md,
   height: defaultTheme.iconSize.md,
 });
+
+export const header = {
+  headerContainer,
+  headerLogo,
+  headerWrapper,
+  headerTitle,
+  headerIconWrapper,
+  headerIcon,
+};

@@ -1,14 +1,14 @@
 import { defaultTheme } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
-export const navBarContainer = style({
+const navBarContainer = style({
   height: '4rem',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
 });
 
-export const navBarWrapper = style({
+const navBarWrapper = style({
   width: '100%',
   display: 'flex',
   justifyContent: 'space-around',
@@ -16,7 +16,9 @@ export const navBarWrapper = style({
   color: defaultTheme.color.basic,
 });
 
-export const navBarIcon = style({
+const navBarIcon = style({
   width: '2rem',
   height: '2rem',
 });
+
+export const navBar = { navBarContainer, navBarWrapper, navBarIcon };
