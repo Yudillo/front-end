@@ -1,22 +1,20 @@
-import { header } from './Header.css';
+import * as s from './Header.css';
 import logo from '@/assets/yudilloLogo.svg';
 import { Bars3Icon } from '@heroicons/react/24/solid';
 import { Link } from '@tanstack/react-router';
 
 export default function Header() {
   return (
-    <header className={header.headerContainer}>
-      <div className={header.headerWrapper}>
-        <Link to='/'>
-          <img className={header.headerLogo} src={logo} alt='logo' />
-        </Link>
+    <header className={s.headerContainer}>
+      <Link to='/' className={s.headerWrapper}>
+        <img className={s.headerLogo} src={logo} alt='logo' />
         <div>
-          <span className={header.headerTitle}>내 보드</span>
+          <span className={s.headerTitle}>내 보드</span>
         </div>
-        <div className={header.headerIconWrapper}>
-          <Bars3Icon className={header.headerIcon} />
+        <div className={s.headerIconWrapper}>
+          <Bars3Icon className={s.headerIcon} />
         </div>
-      </div>
+      </Link>
     </header>
   );
 }

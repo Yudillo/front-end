@@ -9,7 +9,6 @@ import { style } from '@vanilla-extract/css';
 const forgetPasswordWrapper = style([authInput.inputWrapper]);
 
 const forgetPasswordLink = style({
-  width: 'fit-content',
   color: defaultTheme.color.orange,
   marginBottom: '.5rem',
 });

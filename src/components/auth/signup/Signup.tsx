@@ -46,7 +46,7 @@ export default function Signup() {
 
   const handleSignup = () => {
     console.log('회원가입완료 모달창하기');
-    navigate({ to: '/auth/login' });
+    navigate({ to: '/login' });
   };
 
   const handlePostCode = () => {

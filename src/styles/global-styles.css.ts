@@ -1,8 +1,9 @@
 import { MEDIA_QUERY } from '@/constants/breakpoint';
 import { globalStyle, style } from '@vanilla-extract/css';
 import { defaultTheme } from './theme.css';
+import { layoutMobile } from '@/layout/layout-mobile/LayoutMobile.css';
 
-globalStyle(`body`, {
+globalStyle(layoutMobile.container, {
   '@media': Object.keys(MEDIA_QUERY).reduce((acc, key) => {
     const breakpoint = key as keyof typeof MEDIA_QUERY;
     return {

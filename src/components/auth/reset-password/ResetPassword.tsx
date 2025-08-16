@@ -38,7 +38,7 @@ export default function ResetPassword() {
 
   const handleResetPassword = () => {
     console.log('비밀번호변경완료 모달창하기');
-    navigate({ to: '/auth/login' });
+    navigate({ to: '/login' });
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

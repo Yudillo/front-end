@@ -8,12 +8,8 @@ import { loginForm } from './Login.css';
 import { authCommon } from '../common/AuthCommon.css';
 import ButtonWrapper from '@/components/common/button/ButtonWrapper';
 import ButtonBasic from '@/components/common/button/ButtonBasic';
-import Modal from '@/components/common/modal/Modal';
-import { useModal } from '@/hooks/useModal';
 
 export default function Login() {
-  const { isOpen, isConfirm, message, handleOpen, handleClose, handleConfirm } =
-    useModal();
   const [inputValue, setInputValue] = useState<
     Pick<AuthInputType, 'email' | 'password'>
   >({
@@ -38,8 +34,6 @@ export default function Login() {
       email: !!emailValidation,
       password: !!passwordValidation,
     }));
-
-    handleConfirm('메세지');
 
     if (Object.values(validation).every(Boolean)) {
       form.append('email', inputValue.email);
@@ -74,10 +68,7 @@ export default function Login() {
           validationMessage={validation.password ? '' : AUTH_MESSAGE.password}
         />
         <div className={loginForm.forgetPasswordWrapper}>
-          <Link
-            className={loginForm.forgetPasswordLink}
-            to='/auth/reset-password'
-          >
+          <Link className={loginForm.forgetPasswordLink} to='/reset-password'>
             비밀번호를 잊으셨나요?
           </Link>
         </div>
@@ -86,13 +77,10 @@ export default function Login() {
         </ButtonWrapper>
       </form>
       <div className={loginForm.signupWrapper}>
-        <Link className={loginForm.signupLink} to='/auth/signup'>
+        <Link className={loginForm.signupLink} to='/signup'>
           계정이 없나요? 회원가입
         </Link>
       </div>
-      <Modal isOpen={isOpen} isConfirm={isConfirm} onClose={handleClose}>
-        {message}
-      </Modal>
     </section>
   );
 }
