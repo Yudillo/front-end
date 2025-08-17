@@ -3,20 +3,20 @@ import {
   Squares2X2Icon,
   UserIcon,
 } from '@heroicons/react/24/outline';
-import * as s from './NavBar.css';
+import { navBar } from './NavBar.css';
 
 export default function NavBar() {
   return (
-    <nav className={s.navBarContainer}>
-      <div className={s.navBarWrapper}>
+    <nav className={navBar.navBarContainer}>
+      <div className={navBar.navBarWrapper}>
         <div>
-          <Squares2X2Icon className={s.navBarIcon} />
+          <Squares2X2Icon className={navBar.navBarIcon} />
         </div>
         <div>
-          <PlusIcon className={s.navBarIcon} />
+          <PlusIcon className={navBar.navBarIcon} />
         </div>
         <div>
-          <UserIcon className={s.navBarIcon} />
+          <UserIcon className={navBar.navBarIcon} />
         </div>
       </div>
     </nav>
