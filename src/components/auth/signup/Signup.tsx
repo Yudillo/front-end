@@ -64,7 +64,7 @@ export default function Signup() {
     const form = new FormData();
 
     const emailValidation = validationValue('email', inputValue.email);
-    const codeValidation = validationValue('code', inputValue.code);
+    const codeValidation = true;
     const passwordValidation = validationValue('password', inputValue.password);
     const passwordCheckValidation =
       inputValue.password === inputValue.passwordCheck
@@ -90,9 +90,9 @@ export default function Signup() {
       form.append('password', inputValue.password);
       form.append('nickname', inputValue.nickname);
 
-      setTimeout(() => {
-        handleSignup();
-      }, 1500);
+      // setTimeout(() => {
+      //   handleSignup();
+      // }, 1500);
     }
   };
 

@@ -2,14 +2,17 @@ import AuthInput from '../common/AuthInput';
 import { useState, type FormEvent } from 'react';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import { validationValue } from '@/utils/validation';
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import type { AuthInputType } from '@/types/authInput';
 import { loginForm } from './Login.css';
 import { authCommon } from '../common/AuthCommon.css';
 import ButtonWrapper from '@/components/common/button/ButtonWrapper';
 import ButtonBasic from '@/components/common/button/ButtonBasic';
+import { signInUser } from '@/supabase/functions/auth/login/api';
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const [inputValue, setInputValue] = useState<
     Pick<AuthInputType, 'email' | 'password'>
   >({
@@ -36,8 +39,13 @@ export default function Login() {
     }));
 
     if (Object.values(validation).every(Boolean)) {
-      form.append('email', inputValue.email);
-      form.append('password', inputValue.password);
+      const email = inputValue.email;
+      const password = inputValue.password;
+      signInUser({ email, password });
+
+      setTimeout(() => {
+        navigate({ to: '/' });
+      }, 2000);
     }
   };
 
