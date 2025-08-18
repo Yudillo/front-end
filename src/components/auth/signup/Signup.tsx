@@ -49,14 +49,6 @@ export default function Signup() {
     navigate({ to: '/auth/login' });
   };
 
-  const handlePostCode = () => {
-    console.log('코드전송');
-  };
-
-  const handlePostVerifyCode = () => {
-    console.log('인증확인');
-  };
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -101,15 +93,6 @@ export default function Signup() {
       key: 'email',
       type: 'email',
       placeholder: '이메일',
-      checkButton: '코드전송',
-      onClick: handlePostCode,
-    },
-    {
-      key: 'code',
-      type: 'text',
-      placeholder: '인증코드',
-      checkButton: '인증확인',
-      onClick: handlePostVerifyCode,
     },
     { key: 'password', type: 'password', placeholder: '비밀번호' },
     { key: 'passwordCheck', type: 'password', placeholder: '비밀번호 확인' },
