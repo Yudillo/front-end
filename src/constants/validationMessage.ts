@@ -4,4 +4,5 @@ export const AUTH_MESSAGE = {
   password: '형식에 맞는 비밀번호를 입력하세요.',
   passwordCheck: '비밀번호가 일치하지 않습니다.',
   nickname: '형식에 맞는 닉네임을 입력하세요.',
+  prevPassword: '현재 비밀번호와 일치하지 않습니다.',
 } as const;

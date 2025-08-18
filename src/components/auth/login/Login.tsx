@@ -84,7 +84,7 @@ export default function Login() {
         <div className={loginForm.forgetPasswordWrapper}>
           <Link
             className={loginForm.forgetPasswordLink}
-            to='/auth/reset-password'
+            to='/auth/verify-email'
           >
             비밀번호를 잊으셨나요?
           </Link>
