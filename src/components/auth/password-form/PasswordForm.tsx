@@ -20,7 +20,7 @@ interface InputProps {
 
 type InputType = InputHTMLAttributes<HTMLInputElement> & InputProps;
 
-export default function ResetPassword() {
+export default function PasswordForm() {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState<
     Pick<AuthInputType, 'password' | 'passwordCheck'>

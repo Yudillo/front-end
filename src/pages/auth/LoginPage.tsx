@@ -1,10 +1,10 @@
 import LogoImg from '@/components/auth/common/LogoImg';
 import Login from '@/components/auth/login/Login';
-import * as s from './LoginPage.css';
+import { mainContainer } from '@/styles/global-styles.css';
 
 export default function LoginPage() {
   return (
-    <section className={s.loginContainer}>
+    <section className={mainContainer}>
       <LogoImg />
       <Login />
     </section>
