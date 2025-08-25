@@ -44,6 +44,7 @@ const modalXMarkIcon = style({
 
 const modalMain = style({
   padding: '1rem 1rem 0 1rem',
+  whiteSpace: 'pre-line',
 });
 
 const modalButtonWrapper = style({

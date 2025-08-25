@@ -61,7 +61,7 @@ export default function Modal({
                 <XMarkIcon className={modal.modalXMarkIcon} />
               </button>
             </header>
-            <main className={modal.modalMain}>{children}</main>
+            <div className={modal.modalMain}>{children}</div>
             <div className={modal.modalButtonWrapper}>
               <ModalButton
                 variantStyle='check'
