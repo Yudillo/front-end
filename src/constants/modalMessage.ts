@@ -1,1 +1,16 @@
-const MODAL_MESSAGE = {} as const;
+export const MODAL_MESSAGE = {
+  failLogin: `로그인에 실패하였습니다.\n이메일이나 비밀번호를 확인하세요.`,
+  successLogin: `로그인에 성공했습니다.`,
+  failVerifyEmail: '인증 메일 전송이 실패했습니다.',
+  successVerifyEmail: '인증 메일이 성공적으로 전송되었습니다.',
+  failChangePassword: '비밀번호 변경에 실패했습니다.',
+  successChangePassword: '비밀번호가 성공적으로 변경되었습니다.',
+  samePassword: '이전 비밀번호와 달라야합니다.',
+  failSignup: '회원가입이 실패했습니다.',
+  dupleEmail: '이미 가입된 회원입니다.',
+  confirmSignup: '해당 이메일로 인증을 완료하면 회원가입이 완료됩니다.',
+  checkSignout: '정말로 로그아웃 하시겠습니까?',
+  failSignout: '로그아웃에 실패했습니다.',
+  successSignout: '로그아웃 되었습니다.',
+  unknownError: '알 수 없는 에러가 발생했습니다.',
+} as const;

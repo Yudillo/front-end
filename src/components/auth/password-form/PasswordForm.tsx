@@ -12,6 +12,9 @@ import type { AuthInputType } from '@/types/authInput';
 import { authCommon } from '../common/AuthCommon.css';
 import ButtonWrapper from '@/components/common/button/ButtonWrapper';
 import ButtonBasic from '@/components/common/button/ButtonBasic';
+import { updatePassword } from '@/supabase/functions/auth/updatePassword';
+import Modal from '@/components/common/modal/Modal';
+import { useModal } from '@/hooks/useModal';
 
 interface InputProps {
   key: keyof Pick<AuthInputType, 'password' | 'passwordCheck'>;
@@ -22,6 +25,7 @@ type InputType = InputHTMLAttributes<HTMLInputElement> & InputProps;
 
 export default function PasswordForm() {
   const navigate = useNavigate();
+  const { isOpen, message, handleOpen, handleClose } = useModal();
   const [inputValue, setInputValue] = useState<
     Pick<AuthInputType, 'password' | 'passwordCheck'>
   >({
@@ -36,19 +40,14 @@ export default function PasswordForm() {
     passwordCheck: true,
   });
 
-  const handleResetPassword = () => {
-    console.log('비밀번호변경완료 모달창하기');
-    navigate({ to: '/auth/login' });
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const form = new FormData();
 
     const passwordValidation = validationValue('password', inputValue.password);
     const passwordCheckValidation =
-      inputValue.password === inputValue.passwordCheck;
+      inputValue.password === inputValue.passwordCheck
+        ? validationValue('passwordCheck', inputValue.passwordCheck)
+        : false;
 
     setValidation((prev) => ({
       ...prev,
@@ -56,13 +55,19 @@ export default function PasswordForm() {
       passwordCheck: !!passwordCheckValidation,
     }));
 
-    if (Object.values(validation).every(Boolean)) {
-      form.append('password', inputValue.password);
+    if (!Object.values(validation).every(Boolean)) return;
 
-      setTimeout(() => {
-        handleResetPassword();
-      }, 1500);
+    const password = inputValue.password;
+    const { isSuccess, message } = await updatePassword({ password });
+
+    handleOpen(message);
+
+    if (!isSuccess) {
+      return;
     }
+    setTimeout(() => {
+      navigate({ to: '/auth/login' });
+    }, 1500);
   };
 
   const handleChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -99,6 +104,9 @@ export default function PasswordForm() {
           <ButtonBasic title='비밀번호 변경' />
         </ButtonWrapper>
       </form>
+      <Modal isOpen={isOpen} onClose={handleClose}>
+        {message}
+      </Modal>
     </section>
   );
 }

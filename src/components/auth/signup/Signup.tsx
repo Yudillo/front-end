@@ -12,7 +12,9 @@ import type { AuthInputType } from '@/types/authInput';
 import { authCommon } from '../common/AuthCommon.css';
 import ButtonWrapper from '@/components/common/button/ButtonWrapper';
 import ButtonBasic from '@/components/common/button/ButtonBasic';
-import { addUser } from '@/supabase/functions/auth/signup/api';
+import { addUser } from '@/supabase/functions/auth/signup.api';
+import { useModal } from '@/hooks/useModal';
+import Modal from '@/components/common/modal/Modal';
 
 interface InputProps {
   key: keyof AuthInputType;
@@ -24,39 +26,36 @@ type InputType = InputHTMLAttributes<HTMLInputElement> & InputProps;
 
 export default function Signup() {
   const navigate = useNavigate();
+  const { isOpen, isConfirm, message, handleOpen, handleConfirm, handleClose } =
+    useModal();
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<AuthInputType>({
     email: '',
-    code: '',
     password: '',
     passwordCheck: '',
     nickname: '',
   });
   const [validation, setValidation] = useState<{
     email: boolean;
-    code: boolean;
     password: boolean;
     passwordCheck: boolean;
     nickname: boolean;
   }>({
     email: true,
-    code: true,
     password: true,
     passwordCheck: true,
     nickname: true,
   });
 
-  const handleSignup = () => {
-    console.log('회원가입완료 모달창하기');
+  const handleModalAction = () => {
+    if (!isSuccess) return handleClose();
     navigate({ to: '/auth/login' });
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const form = new FormData();
-
     const emailValidation = validationValue('email', inputValue.email);
-    const codeValidation = true;
     const passwordValidation = validationValue('password', inputValue.password);
     const passwordCheckValidation =
       inputValue.password === inputValue.passwordCheck
@@ -67,24 +66,33 @@ export default function Signup() {
     setValidation((prev) => ({
       ...prev,
       email: !!emailValidation,
-      code: !!codeValidation,
       password: !!passwordValidation,
-      passwordCheck: !!passwordCheckValidation,
+      passwordCheck: passwordCheckValidation,
       nickname: !!nicknameValidation,
     }));
 
-    if (Object.values(validation).every(Boolean)) {
-      const email = inputValue.email;
-      const password = inputValue.password;
-      const nickname = inputValue.nickname;
-      addUser({ email, password, nickname });
-      form.append('email', inputValue.email);
-      form.append('password', inputValue.password);
-      form.append('nickname', inputValue.nickname);
+    if (
+      !emailValidation ||
+      !passwordValidation ||
+      !passwordCheckValidation ||
+      !nicknameValidation
+    ) {
+      return;
+    }
 
-      // setTimeout(() => {
-      //   handleSignup();
-      // }, 1500);
+    const email = inputValue.email;
+    const password = inputValue.password;
+    const nickname = inputValue.nickname;
+    const { isSuccess: success, message } = await addUser({
+      email,
+      password,
+      nickname,
+    });
+    setIsSuccess(success);
+    handleOpen(message);
+
+    if (!success) {
+      return;
     }
   };
 
@@ -131,6 +139,14 @@ export default function Signup() {
           <ButtonBasic title='회원가입' />
         </ButtonWrapper>
       </form>
+      <Modal
+        isOpen={isOpen}
+        isConfirm={isConfirm}
+        onCheck={handleModalAction}
+        onClose={handleClose}
+      >
+        {message}
+      </Modal>
     </section>
   );
 }

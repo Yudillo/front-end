@@ -8,9 +8,9 @@ import { loginForm } from './Login.css';
 import { authCommon } from '../common/AuthCommon.css';
 import ButtonWrapper from '@/components/common/button/ButtonWrapper';
 import ButtonBasic from '@/components/common/button/ButtonBasic';
-import { signInUser } from '@/supabase/functions/auth/login/api';
 import Modal from '@/components/common/modal/Modal';
 import { useModal } from '@/hooks/useModal';
+import { signInUser } from '@/supabase/functions/auth/login.api';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -28,10 +28,8 @@ export default function Login() {
     password: boolean;
   }>({ email: true, password: true });
 
-  const handleSubmitLogin = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmitLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const form = new FormData();
 
     const emailValidation = validationValue('email', inputValue.email);
     const passwordValidation = validationValue('password', inputValue.password);
@@ -42,16 +40,22 @@ export default function Login() {
       password: !!passwordValidation,
     }));
 
-    handleConfirm('메세지');
-
-    if (Object.values(validation).every(Boolean)) {
+    if (!emailValidation || !passwordValidation) {
+      return;
+    } else {
       const email = inputValue.email;
       const password = inputValue.password;
-      signInUser({ email, password });
+      const { isSuccess, message } = await signInUser({ email, password });
 
-      setTimeout(() => {
-        navigate({ to: '/' });
-      }, 2000);
+      if (!isSuccess) {
+        return handleOpen(message);
+      } else {
+        handleOpen(message);
+        setTimeout(() => {
+          navigate({ to: '/' });
+        }, 2000);
+        return;
+      }
     }
   };
 
@@ -98,7 +102,7 @@ export default function Login() {
           계정이 없나요? 회원가입
         </Link>
       </div>
-      <Modal isOpen={isOpen} isConfirm={isConfirm} onClose={handleClose}>
+      <Modal isOpen={isOpen} onClose={handleClose}>
         {message}
       </Modal>
     </section>
