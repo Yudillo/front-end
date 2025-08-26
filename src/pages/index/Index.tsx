@@ -5,7 +5,8 @@ import { signoutUser } from '@/supabase/functions/auth/logout.api';
 import { useNavigate } from '@tanstack/react-router';
 
 export default function Index() {
-  const { isOpen, isConfirm, message, handleConfirm, handleClose } = useModal();
+  const { isOpen, isConfirm, message, handleOpen, handleConfirm, handleClose } =
+    useModal();
   const navigate = useNavigate();
 
   const handleClickSignout = () => {
@@ -13,8 +14,13 @@ export default function Index() {
   };
 
   const handleCheckSignout = async () => {
-    await signoutUser();
-    navigate({ to: '/auth/login' });
+    handleClose();
+    const { isSuccess, message } = await signoutUser();
+    handleOpen(message);
+    if (!isSuccess) return;
+    setTimeout(() => {
+      navigate({ to: '/auth/login' });
+    }, 1000);
   };
 
   return (
