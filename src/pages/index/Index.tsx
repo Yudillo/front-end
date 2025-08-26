@@ -1,4 +1,5 @@
 import Modal from '@/components/common/modal/Modal';
+import { MODAL_MESSAGE } from '@/constants/modalMessage';
 import { useModal } from '@/hooks/useModal';
 import { signoutUser } from '@/supabase/functions/auth/logout.api';
 import { useNavigate } from '@tanstack/react-router';
@@ -7,12 +8,12 @@ export default function Index() {
   const { isOpen, isConfirm, message, handleConfirm, handleClose } = useModal();
   const navigate = useNavigate();
 
-  const handleClickSignout = async () => {
-    const message = await signoutUser();
-    handleConfirm(message);
+  const handleClickSignout = () => {
+    handleConfirm(MODAL_MESSAGE.checkSignout);
   };
 
-  const handleCheckSignout = () => {
+  const handleCheckSignout = async () => {
+    await signoutUser();
     navigate({ to: '/auth/login' });
   };
 

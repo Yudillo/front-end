@@ -44,14 +44,15 @@ export async function addUser({
     },
   });
 
-  await supabase
-    .from('user')
-    .insert({ id: data.user?.id, email: data.user?.email });
-
   if (error) {
     apiResult.message = MODAL_MESSAGE.failSignup;
     return apiResult;
   }
+
+  await supabase
+    .from('user')
+    .insert({ id: data.user?.id, email: data.user?.email });
+
   apiResult.isSuccess = true;
   apiResult.message = MODAL_MESSAGE.confirmSignup;
   return apiResult;

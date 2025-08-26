@@ -49,13 +49,14 @@ export default function PasswordForm() {
         ? validationValue('passwordCheck', inputValue.passwordCheck)
         : false;
 
-    setValidation((prev) => ({
-      ...prev,
+    const validationObj = {
       password: !!passwordValidation,
       passwordCheck: !!passwordCheckValidation,
-    }));
+    };
 
-    if (!Object.values(validation).every(Boolean)) return;
+    setValidation(validationObj);
+
+    if (!Object.values(validationObj).every(Boolean)) return;
 
     const password = inputValue.password;
     const { isSuccess, message } = await updatePassword({ password });
