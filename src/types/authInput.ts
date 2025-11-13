@@ -4,3 +4,5 @@ export interface AuthInputType {
   passwordCheck: string;
   nickname: string;
 }
+
+export type LoginInputType = Pick<AuthInputType, 'email'|'password'>

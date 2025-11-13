@@ -1,11 +1,11 @@
 import { MODAL_MESSAGE } from '@/constants/modalMessage';
 import supabase from '@/supabase/client';
-import type { AuthInputType } from '@/types/authInput';
+import type { LoginInputType } from '@/types/authInput';
 
 export async function signInUser({
   email,
   password,
-}: Pick<AuthInputType, 'email' | 'password'>) {
+}: LoginInputType) {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,

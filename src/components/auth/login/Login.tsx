@@ -3,7 +3,7 @@ import { useState, type FormEvent } from 'react';
 import { AUTH_MESSAGE } from '@/constants/validationMessage';
 import { validationValue } from '@/utils/validation';
 import { Link, useNavigate } from '@tanstack/react-router';
-import type { AuthInputType } from '@/types/authInput';
+import type { LoginInputType } from '@/types/authInput';
 import { loginForm } from './Login.css';
 import { authCommon } from '../common/AuthCommon.css';
 import ButtonWrapper from '@/components/common/button/ButtonWrapper';
@@ -18,7 +18,7 @@ export default function Login() {
   const { isOpen, isConfirm, message, handleOpen, handleClose, handleConfirm } =
     useModal();
   const [inputValue, setInputValue] = useState<
-    Pick<AuthInputType, 'email' | 'password'>
+    LoginInputType
   >({
     email: '',
     password: '',
